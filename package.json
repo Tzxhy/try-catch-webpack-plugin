@@ -4,26 +4,25 @@
   "description": "wrapper your bundle.js into a try-catch block",
   "main": "index.js",
   "scripts": {
-    "test": "rm -rf test/dist && webpack --config test/webpack.config.js"
+    "test": "rm -rf test/dist && node --inspect-brk ./node_modules/.bin/webpack --config test/webpack.config.js"
   },
   "keywords": [
     "webpack",
     "try",
     "catch"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tzxhy/try-catch-webpack-plugin.git"
+  },
   "author": "tzxhy",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.1.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.2",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0"
-  },
-  "dependencies": {
-    "sts": "^3.0.2"
   }
 }

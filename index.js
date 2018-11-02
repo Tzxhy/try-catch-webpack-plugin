@@ -1,2 +1,1 @@
-var OfflinePlugin = require('./src/index.js');
-module.exports = OfflinePlugin;
+module.exports = require('./src/index.js');
