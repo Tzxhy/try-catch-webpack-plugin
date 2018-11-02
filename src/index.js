@@ -2,7 +2,7 @@
 * @Author: 谭智轩
 * @Date:   2018-09-19 16:30:15
 * @Last Modified by:   谭智轩
-* @Last Modified time: 2018-11-02 12:01:36
+* @Last Modified time: 2018-11-02 12:14:24
 * @email: zhixuan.tan@qunar.com
 */
 const fs = require('fs');
@@ -13,11 +13,11 @@ class TryCatchPlugin {
     constructor({
         cacheName = 'wrapper-bundle',
         wrapperPrd = false,
-        wrapper = `try{{{code}}}catch(err){alert('err.message', err.message); err.stack && console.log('err.stack: ', err.stack);}`
+        wrapper = `try{{{code}}}catch(err){alert('err.message: ' +  err.message + '\\n' + 'err.stack: ' + err.stack)}`
     } = {
         cacheName: 'wrapper-bundle',
         wrapperPrd: false,
-        wrapper: `try{{{code}}}catch(err){alert('err.message', err.message); err.stack && console.log('err.stack: ', err.stack);}`
+        wrapper: `try{{{code}}}catch(err){alert('err.message: ' +  err.message + '\\n' + 'err.stack: ' + err.stack)}`
     }) {
         this.cacheName = cacheName;
         this.wrapperPrd = wrapperPrd;

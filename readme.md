@@ -20,7 +20,7 @@ config = {
 
         // default like this. Define wrapper format. 
         // {{code}} indicates the final asset string. Always keep this pattern.
-        wrapper: `try{{{code}}}catch(err){alert('err.message', err.message); err.stack && console.log('err.stack: ', err.stack);}`
+        wrapper: `try{{{code}}}catch(err){alert('err.message: ' +  err.message + '\n' + 'err.stack: ' + err.stack)}`
     })],
     ...
 }
@@ -28,9 +28,30 @@ config = {
 Generally, you can just new TryCatchPlugin() without any param.
 Then in your bundle.js or chunk, you will see:
 ```js
-try{(window.webpackJsonp=window.webpackJsonp||[]).push([[1],[,function(n,w,e){"use strict";e.r(w),w.default={name:1}}]]);}catch(err){alert('err.message', err.message); err.stack && console.log('err.stack: ', err.stack);}
+try{(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[0],{
+
+/***/ "./async.js":
+/*!******************!*\
+  !*** ./async.js ***!
+  \******************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 1
+});
+
+/***/ })
+
+}]);}catch(err){alert('err.message: ' +  err.message + '\n' + 'err.stack: ' + err.stack)}
 ```
-all your code is wrappered by try-catch(or any formats you want).
+all your code is wrappered by try-catch(or any format you want).
 
 ### ChangeLog
-v0.0.2: fix destructure error.
+ - v0.0.3: change default wrapper format to 
+```js
+    try{{{code}}}catch(err){alert('err.message: ' +  err.message + '\n' + 'err.stack: ' + err.stack)}   
+```
+ - v0.0.2: fix destructure error.
