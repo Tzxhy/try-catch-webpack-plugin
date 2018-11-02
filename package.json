@@ -1,6 +1,6 @@
 {
   "name": "try-catch-webpack-plugin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "wrapper your bundle.js into a try-catch block",
   "main": "index.js",
   "scripts": {
