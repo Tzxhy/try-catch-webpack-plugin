@@ -1,10 +1,10 @@
 {
   "name": "try-catch-webpack-plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "wrapper your bundle.js into a try-catch block",
   "main": "index.js",
   "scripts": {
-    "test": "rm -rf test/dist && node --inspect-brk ./node_modules/.bin/webpack --config test/webpack.config.js"
+    "test": "rm -rf test/dist && webpack --config test/webpack.config.js"
   },
   "keywords": [
     "webpack",

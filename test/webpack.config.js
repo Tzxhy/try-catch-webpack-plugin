@@ -3,7 +3,7 @@ var path = require('path');
 
 
 module.exports = {
-    mode: 'production',
+    mode: 'development',
     target: 'web',
     context: path.resolve(__dirname),
     entry: {
@@ -29,10 +29,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new TryCatchPlugin({
-            cacheName: 'test',
-            wrapperPrd: true
-        })
+        new TryCatchPlugin()
     ]
 };
 
