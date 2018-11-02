@@ -9,14 +9,25 @@ yarn add try-catch-webpack-plugin -D
 ```
 In your webpack.config.js:
 ```js
-const TryCatchPlugin = require('../index.js');
+const TryCatchPlugin = require('try-catch-webpack-plugin');
 
 config = {
 
     ...
     plugins: [new TryCatchPlugin({
-        wrapperPrd: true, // default false. define whether wrapper prd assets.
-        wrapper: 'try{{{code}}}catch(err){alert(err.message)}' // default like this. define block format. {{code}} indicates the final asset string.
-    })]
+        // default false. define whether wraps prd assets.(prd usually is minified)
+        wrapperPrd: true, 
+
+        // default like this. Define wrapper format. 
+        // {{code}} indicates the final asset string. Always keep this pattern.
+        wrapper: `try{{{code}}}catch(err){alert('err.message', err.message); err.stack && console.log('err.stack: ', err.stack);}`
+    })],
+    ...
 }
 ```
+
+Then in your bundle.js or chunk, you will see:
+```js
+try{(window.webpackJsonp=window.webpackJsonp||[]).push([[1],[,function(n,w,e){"use strict";e.r(w),w.default={name:1}}]]);}catch(err){alert('err.message', err.message); err.stack && console.log('err.stack: ', err.stack);}
+```
+all your code is wrappered by try-catch(or any formats you want).
